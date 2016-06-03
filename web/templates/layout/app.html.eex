@@ -13,10 +13,23 @@
 
   <body>
     <div class="container">
+      <div class="header">
+        <ol class="breadcrumb text-right">
+          <%= if @current_user do %>
+            <li><%= link "All", to: user_path(@conn, :index) %></li>
+            <li><%= link "New", to: user_path(@conn, :new) %></li>
+            <li>
+              ( <%= @current_user.name %> )
+              <%= link "Log out", to: session_path(@conn, :delete, @current_user), method: "delete" %>
+            </li>
+          <% else %>
+            <li> <%= link "Register", to: user_path(@conn, :new) %> </li>
+            <li> <%= link "Log in", to: session_path(@conn, :new) %> </li>
+          <% end %>
+        </ol>
+      </div>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= link "All", to: user_path(@conn, :index) %>
-      <%= link "New", to: user_path(@conn, :new) %>
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
