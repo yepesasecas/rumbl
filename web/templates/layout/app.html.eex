@@ -16,8 +16,9 @@
       <div class="header">
         <ol class="breadcrumb text-right">
           <%= if @current_user do %>
-            <li><%= link "All", to: user_path(@conn, :index) %></li>
-            <li><%= link "New", to: user_path(@conn, :new) %></li>
+            <li><%= link "Videos", to: video_path(@conn, :index) %></li>
+            <li><%= link "Users", to: user_path(@conn, :index) %></li>
+            <li><%= link "New User", to: user_path(@conn, :new) %></li>
             <li>
               ( <%= @current_user.name %> )
               <%= link "Log out", to: session_path(@conn, :delete, @current_user), method: "delete" %>
