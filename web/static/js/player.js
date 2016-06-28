@@ -3,7 +3,6 @@ let Player = {
 
   init(domId, playerId, onReady) {
     window.onYouTubeIframeAPIReady = () =>{
-      console.log("aaaa")
       this.onIframeReady(domId, playerId, onReady)
     }
     let youtubeScriptTag = document.createElement("script")
